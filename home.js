@@ -6,6 +6,27 @@ males = data.map( function(x) {return x["males"];} );
 femTotal = females.reduce( function(x, y) {return x + y;} );
 maleTotal = males.reduce( function(x, y) {return x + y;} );
 
-console.log(femTotal)
-console.log(maleTotal)
+femUnder50k = females.filter( function(x) {return x < 50000;} );
+maleUnder50k = males.filter( function(x) {return x < 50000;} );
+
+greaterSex = data.map( function(x) {
+	if(x["females"] > x["males"]){
+	    return "females";
+	}
+	else{
+	    return "males";
+	}} );
+
+femaleWins = greaterSex.filter( function(x) {return x == "females";} );
+maleWins = greaterSex.filter( function(x) {return x == "males";} );
+
+console.log(females);
+console.log(maleTotal);
+
+document.write("<h2>Total number of females in 2010: " + femTotal + "</h2><br>");
+document.write("<h2>Total number of males in 2010: " + maleTotal + "</h2><br>");
+document.write("<h2>Number of female age groups with under 50,000 members in 2010: " + femUnder50k.length + "</h2><br>");
+document.write("<h2>Number of male age groups with under 50,000 members in 2010: " + maleUnder50k.length + "</h2><br>");
+document.write("<h2>Number of age groups with more females than males in 2010: " + femaleWins.length + "</h2><br>");
+document.write("<h2>Number of age groups with more males than females in 2010: " + maleWins.length + "</h2><br>");
 
